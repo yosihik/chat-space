@@ -1,0 +1,38 @@
+.main-chat
+  .main-group
+    .main-groups
+      .main-groups__leftbox
+        .main-groups__leftt_title
+          test
+        .main-groups__leftbox-member
+          Member : masa
+      .main-groups__rightbox
+        = link_to "#" do
+          Edit
+  .main-message
+    .messages
+      .messages__box
+        .messages__box__name
+          masa
+        .messages__box__time
+          2020/4/23
+      .messages__text
+        yahho
+    .messages
+      .messages__box
+        .messages__box__name
+          mane
+        .messages__box__time
+          2020/4/23
+      .messages__text
+        tanami
+  .main-form
+    .from
+      .from__input
+        %input{placeholder: "type a message"}
+        %label{class: "input-box__image"}
+          = icon('fas', 'image')
+          %input{type: "file"}
+      .from__right
+        %input{type:"submit", value:"Send" }
+          

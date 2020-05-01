@@ -3,36 +3,24 @@
     .main-groups
       .main-groups__leftbox
         .main-groups__leftt_title
-          test
+          = @group.name
         .main-groups__leftbox-member
-          Member : masa
+          Member :
+          - @group.users.each do |user|
+            = user.name
       .main-groups__rightbox
-        = link_to "#" do
+        = link_to edit_group_path(@group) do
           Edit
   .main-message
-    .messages
-      .messages__box
-        .messages__box__name
-          masa
-        .messages__box__time
-          2020/4/23
-      .messages__text
-        yahho
-    .messages
-      .messages__box
-        .messages__box__name
-          mane
-        .messages__box__time
-          2020/4/23
-      .messages__text
-        tanami
+    = render @messages
   .main-form
     .from
-      .from__input
-        %input{placeholder: "type a message"}
-        %label{class: "input-box__image"}
-          = icon('fas', 'image')
-          %input{type: "file"}
-      .from__right
-        %input{type:"submit", value:"Send" }
-          
+      = form_for [@group, @message] do |f|
+        .from__input
+          .from__input__box
+            = f.text_field :content, class: '', placeholder: 'type a message'
+            = f.label :image, class: "input-box__image" do
+              = icon('fas', 'image', class: '')
+              = f.file_field :image, class: ''
+          = f.submit 'Send', class: 'from__input__right'
+            
